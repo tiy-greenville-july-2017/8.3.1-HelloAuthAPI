@@ -33,8 +33,9 @@ passport.use(new BasicStrategy(function (username, password, done) {
 
 app.get("/", passport.authenticate(['basic', 'anonymous'], {session: false}), UserController.detail);
 app.post("/users", UserController.create);
-app.get("/animals", AnimalController.list);
+app.get("/animals", passport.authenticate(['basic', 'anonymous'], {session: false}), AnimalController.list);
 app.get("/animals/:id", AnimalController.detail);
 app.post("/animals", AnimalController.create);
+app.post("/animals/:id/adopt", passport.authenticate('basic', {session: false}), AnimalController.adopt);
 
 app.listen(3000);
