@@ -2,7 +2,6 @@ const models = require('../models');
 
 module.exports = {
   list: (req, res) => {
-    console.log(req.query);
     models.Animal.findAll({
       where: req.query
     }).then((results) => {
