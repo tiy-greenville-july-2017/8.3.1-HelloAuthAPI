@@ -38,4 +38,4 @@ app.get("/animals/:id", AnimalController.detail);
 app.post("/animals", AnimalController.create);
 app.post("/animals/:id/adopt", passport.authenticate('basic', {session: false}), AnimalController.adopt);
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
